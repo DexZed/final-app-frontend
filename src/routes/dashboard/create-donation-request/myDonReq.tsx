@@ -4,7 +4,24 @@ import { useAuthContext } from "../../../contexts/context";
 import { Link } from "react-router";
 import { formatTime } from "../../../utils/utilities";
 import React, { useState } from "react";
+interface DonationItem {
+  _id: string;
+  recipientName: string;
+  recipientDistrict: string;
+  recipientUpazila?: string;
+  donationDate: string;
+  donationTime: string;
+  bloodGroup: string;
+  donationStatus: "pending" | "inProgress" | "done" | "cancelled" | "completed";
+  requesterEmail: string; // Important for this component's filter
+  requesterName?: string;
+  // ... other properties
+}
 
+interface ApiPage {
+  donations: DonationItem[];
+  nextCursor: number | null;
+}
 type Props = {};
 
 function MyDonReq({}: Props) {
