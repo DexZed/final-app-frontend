@@ -1,50 +1,30 @@
-# React + TypeScript + Vite
+# 🩸 BloodConnect - Blood Donation Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **BloodConnect**, a full-featured blood donation management system built using the **MERN** stack (MongoDB, Express.js, React, Node.js). This platform connects donors, volunteers, and recipients in an efficient and user-friendly way.
 
-Currently, two official plugins are available:
+### 🔑 Admin Credentials
+- **Username**: Administrator
+- **Password**: Admin1234
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔗 Live Site
+[Visit BloodConnect](https://final-31985.web.app)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Features
 
-- Configure the top-level `parserOptions` property like this:
+- 🔐 **Role-based Authentication** – Supports Admin, Donor, and Volunteer roles with different access privileges.
+- 📝 **User Registration & Login** – Register as a donor with avatar upload and blood group selection; login system secured with JWT.
+- 📋 **Donation Request Management** – Create, edit, and manage blood donation requests with dynamic statuses like pending, in-progress, done, and canceled.
+- 🧭 **Role Management Dashboard** – Admins can promote users to volunteers or other admins, and block/unblock users with a single click.
+- 📊 **Admin Dashboard** – Includes user stats, donation stats, and total funds raised, all in a beautifully designed dashboard.
+- 🧪 **Dynamic Search Page** – Search for donors based on blood group, district, and upazila.
+- 🧠 **Blog Management System** – Add, edit, publish/unpublish blogs with rich-text editor support using `jodit-react`.
+- 💵 **Funding Integration** – Authenticated users can donate funds via Stripe and view the total funds raised.
+- 🔎 **Donation Requests Directory** – Public page for browsing pending donation requests; details available after login.
+- 🧍 **Responsive Profile Management** – View and update profile with editable fields (except email), and avatar upload using ImageBB.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+> Built with ❤️ in 2025 using modern web technologies.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```

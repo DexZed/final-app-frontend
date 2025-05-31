@@ -44,8 +44,8 @@ function Profile({}: Props) {
   // console.log("User API data:", JSON.stringify(data));
 
   useEffect(() => {
-    if (data?.data?.user) {
-      const userData = data.data.user;
+    if (data?.user) {
+      const userData = data.user;
       setFields(userData);
 
       // Initialize selectedDistrict and filter Upazilas
@@ -73,10 +73,10 @@ function Profile({}: Props) {
     }
   }, [data]); // Depend on 'data' object
 
-  // console.log("Fields state:", fields);
-  // console.log("Selected District:", selectedDistrict);
-  // console.log("Selected Upazila:", selectedUpazila);
-  // console.log("Filtered Upazilas:", filteredUpazilas);
+  console.log("Fields state:", fields);
+   console.log("Selected District:", selectedDistrict);
+   console.log("Selected Upazila:", selectedUpazila);
+  console.log("Filtered Upazilas:", filteredUpazilas);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
