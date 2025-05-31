@@ -1,11 +1,11 @@
 import { useRef, useState, useMemo } from "react";
-import JoditEditor from "jodit-react";
 import { useAuthContext } from "../../../contexts/context";
-
+import { lazy, Suspense } from "react";
+const JoditEditor = lazy(() => import("jodit-react"));
 type Props = { placeholder?: string };
 
 function Blog({ placeholder }: Props) {
-    const {getAuthToken} = useAuthContext();
+  const { getAuthToken } = useAuthContext();
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [fields, setFields] = useState({
@@ -13,7 +13,7 @@ function Blog({ placeholder }: Props) {
     content: "",
     picture: "",
   });
- 
+
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -74,16 +74,16 @@ function Blog({ placeholder }: Props) {
     console.log(title, picture, content);
 
     const postContent = {
-        title,
-        content,
+      title,
+      content,
       picture,
-      status:"draft"
-    }
+      status: "draft",
+    };
     // Send the form data to the server
     try {
-        const { api } = await import("../../../services/api");
-    const {showSuccessAlert} = await import("../../../utils/utilities");
-    const token = await getAuthToken();
+      const { api } = await import("../../../services/api");
+      const { showSuccessAlert } = await import("../../../utils/utilities");
+      const token = await getAuthToken();
       await api.post("/api/createPost", postContent, {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -91,9 +91,9 @@ function Blog({ placeholder }: Props) {
       showSuccessAlert("Success", "Successfully signed up");
       console.log("Successfully post created");
     } catch (error) {
-        console.error("Error creating post:", error);
-        const {showErrorAlert} = await import("../../../utils/utilities");
-        showErrorAlert("Error", "Failed to create post");
+      console.error("Error creating post:", error);
+      const { showErrorAlert } = await import("../../../utils/utilities");
+      showErrorAlert("Error", "Failed to create post");
     }
   }
 
@@ -140,17 +140,18 @@ function Blog({ placeholder }: Props) {
                 <div className="label">
                   <span className="label-text">Content</span>
                 </div>
-                <JoditEditor
-                  ref={editor}
-                  value={content}
-                  config={config}
-                  tabIndex={1} // tabIndex of textarea
-                  onBlur={handleEditorBlur}// preferred to use only this option to update the content for performance reasons
-                 
-                />
+                <Suspense fallback={<div>Loading editor...</div>}>
+                  <JoditEditor
+                    ref={editor}
+                    value={content}
+                    config={config}
+                    tabIndex={1}
+                    onBlur={handleEditorBlur}
+                  />
+                </Suspense>
               </label>
               <div className="m-10 ">
-                <button  type="submit" className="btn btn-outline btn-primary">
+                <button type="submit" className="btn btn-outline btn-primary">
                   Submit
                 </button>
               </div>
