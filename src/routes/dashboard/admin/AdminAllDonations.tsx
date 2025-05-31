@@ -5,9 +5,20 @@ import { useAuthContext } from "../../../contexts/context";
 import { formatTime } from "../../../utils/utilities";
 
 
-type Props = {}
-
-function AdminAllDonations({}: Props) {
+interface DonationItem { // Define a type for your donation items for better type safety
+  _id: string;
+  recipientName: string;
+  recipientDistrict: string;
+  recipientUpazila?: string;
+  donationDate: string;
+  donationTime: string;
+  bloodGroup: string;
+  donationStatus: "pending" | "inProgress" | "done" | "cancelled" | "completed"; // Add 'completed' if used
+  requesterName?: string;
+  requesterEmail?: string;
+  // Add any other properties your item has
+}
+function AdminAllDonations() {
     const { getAuthToken, currentUser } = useAuthContext();
     const [selectedStatus, setSelectedStatus] = useState("");
     const {
