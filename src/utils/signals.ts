@@ -1,6 +1,6 @@
 import { signal, effect } from '@preact/signals-react';
 import { useAuthContext } from '../contexts/context';
-import api from '../services/api';
+import {api} from '../services/api';
 
 // Signal for triggered actions
 const triggeredAction = signal<string | null>(null);
