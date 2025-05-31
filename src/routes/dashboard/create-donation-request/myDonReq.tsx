@@ -37,25 +37,32 @@ function MyDonReq({}: Props) {
     status,
   } = useInfiniteQuery({
     queryKey: ["myDonationRequests", currentUser?.email, selectedStatus],
-    queryFn: async ({ pageParam }) => {
+    queryFn: async ({ pageParam = 0 }) => {
+      // Added default for pageParam
       const { api } = await import("../../../services/api");
       const token = await getAuthToken();
+      // Consider adding currentUser.email and selectedStatus to the API call if server-side filtering is desired
       const response = await api.get(
-        `/api/getDonationRequests?limit=3&cursor=${pageParam}`,
+        // Example for server-side filtering:
+        // `/api/getDonationRequests?limit=3&cursor=<span class="math-inline">\{pageParam\}&requesterEmail\=</span>{currentUser?.email}${selectedStatus ? `&status=${selectedStatus}` : ''}`,
+        `/api/getDonationRequests?limit=3&cursor=${pageParam}`, // Current implementation
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      const result=response?.data;
-      return Array.isArray(result?.donations) ? result?.donations : [];
+      const result = response?.data;
+      if (!result || !Array.isArray(result.donations)) {
+        console.error("API response is not in the expected format:", result);
+        return { donations: [], nextCursor: null }; // Fallback
+      }
+      return result; // Return the object { donations: [...], nextCursor: ... }
     },
 
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextCursor,
     maxPages: 3,
-    
   });
-console.log("data",data)
+  console.log("data", data);
 
   if (status === "pending") return <div>Loading...</div>;
   if (status === "error") return <div>Error : {error.message}</div>;
@@ -101,31 +108,32 @@ console.log("data",data)
     console.log(response);
   }
   console.log("data", data);
-  
 
   return (
     <>
       <div className="text-3xl font-bold flex justify-center m-10">
         Welcome {currentUser?.displayName}
       </div>
-      <div className="flex justify-start md:justify-end m-5"><label className="form-control w-full max-w-xs ">
-        <div className="label">
-          <span className="label-text">Filter by Status</span>
-        </div>
-        <select
-          className="select select-primary w-full max-w-xs"
-          name="search"
-          id="search"
-          onChange={(e) => setSelectedStatus(e.target.value)}
-          value={selectedStatus}
-        >
-          <option value="">All</option>
-          <option value="pending">Pending</option>
-          <option value="done">Done</option>
-          <option value="cancelled">Cancelled</option>
-          <option value="inProgress">In Progress</option>
-        </select>
-      </label></div>
+      <div className="flex justify-start md:justify-end m-5">
+        <label className="form-control w-full max-w-xs ">
+          <div className="label">
+            <span className="label-text">Filter by Status</span>
+          </div>
+          <select
+            className="select select-primary w-full max-w-xs"
+            name="search"
+            id="search"
+            onChange={(e) => setSelectedStatus(e.target.value)}
+            value={selectedStatus}
+          >
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="done">Done</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="inProgress">In Progress</option>
+          </select>
+        </label>
+      </div>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -147,9 +155,11 @@ console.log("data",data)
             {data?.pages?.map((group, i) => (
               <React.Fragment key={i}>
                 {group
-                  ?.filter((item: any) =>
-                    (selectedStatus ? item.donationStatus === selectedStatus : true) &&
-                  item.requesterEmail === currentUser?.email
+                  ?.filter(
+                    (item: any) =>
+                      (selectedStatus
+                        ? item.donationStatus === selectedStatus
+                        : true) && item.requesterEmail === currentUser?.email
                   )
                   .map((item: any) => {
                     return (
@@ -217,12 +227,12 @@ console.log("data",data)
                           </Link>
                         </td>
                         <td>
-                          <Link to={`/dashboard/detailsView/${item._id}`}
+                          <Link
+                            to={`/dashboard/detailsView/${item._id}`}
                             className="btn btn-outline btn-secondary"
-                           
                           >
                             View
-                          </Link >
+                          </Link>
                         </td>
                         <td>
                           <button
