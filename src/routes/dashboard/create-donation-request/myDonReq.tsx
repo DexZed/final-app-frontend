@@ -35,7 +35,7 @@ function MyDonReq({}: Props) {
     isFetching,
     isFetchingNextPage,
     status,
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<ApiPage,Error>({
     queryKey: ["myDonationRequests", currentUser?.email, selectedStatus],
     queryFn: async ({ pageParam = 0 }) => {
       // Added default for pageParam
@@ -152,9 +152,9 @@ function MyDonReq({}: Props) {
             </tr>
           </thead>
           <tbody>
-            {data?.pages?.map((group, i) => (
+            {data?.pages?.map((page, i) => (
               <React.Fragment key={i}>
-                {group
+                {page.donations
                   ?.filter(
                     (item: any) =>
                       (selectedStatus
