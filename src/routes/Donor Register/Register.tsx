@@ -8,7 +8,7 @@ import { dist } from "../../assets/districts";
 type Props = {};
 
 function Register({}: Props) {
-  const { getAuthToken, signUpAndUpdate, currentUser } = useAuthContext();
+  const { getAuthToken, currentUser } = useAuthContext();
 
   const [fields, setFields] = useState({
     uuid: "",
