@@ -62,7 +62,7 @@ function MyDonReq({}: Props) {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
     maxPages: 3,
   });
-  console.log("data", data);
+  //console.log("data", data);
 
   if (status === "pending") return <div>Loading...</div>;
   if (status === "error") return <div>Error : {error.message}</div>;
@@ -79,7 +79,7 @@ function MyDonReq({}: Props) {
         const response = await api.delete(`/api/deleteDonation/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response.data);
+        //console.log(response.data);
       }
     );
   }
@@ -93,7 +93,7 @@ function MyDonReq({}: Props) {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(response);
+    //console.log(response);
   }
   async function handleCancel(id: string) {
     const { api } = await import("../../../services/api");
@@ -105,9 +105,9 @@ function MyDonReq({}: Props) {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(response);
+    //console.log(response);
   }
-  console.log("data", data);
+  //console.log("data", data);
 
   return (
     <>

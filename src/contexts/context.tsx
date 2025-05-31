@@ -159,15 +159,15 @@ export default function AuthProvider({ children }: AuthProvider) {
     const checkSession = async () => {
       try {
         const res = await api.get("/api/getSessions");
-        console.log("Response from /api/getSessions:", res);
+        //console.log("Response from /api/getSessions:", res);
         if (res.status === 200) {
-          console.log("Session is valid:", res.data);
+          //console.log("Session is valid:", res.data);
         } else {
-          console.log("No session detected");
+          //console.log("No session detected");
         }
       } catch (error) {
         console.error("Session check failed:", error);
-        console.log("Error has occurred");
+        //console.log("Error has occurred");
       }
     };
   

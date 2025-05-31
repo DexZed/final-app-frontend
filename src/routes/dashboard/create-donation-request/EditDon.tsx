@@ -37,7 +37,7 @@ function EditDon({}: Props) {
 
     // Handle regular input changes (excluding "picture")
     setFields((prev) => ({ ...prev, [name]: value }));
-    console.log(fields)
+    //console.log(fields)
   };
   const handleDistrictChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const districtName = e.target.value;
@@ -83,7 +83,7 @@ function EditDon({}: Props) {
         donationStatus: "pending", // Default value for status
       };
     const token = await getAuthToken();
-      console.log(donationRequest);
+      //console.log(donationRequest);
     try {
       const {api} = await import ("../../../services/api")
       await api.patch(`/api/updateDonationRequest/${id}`, donationRequest, {

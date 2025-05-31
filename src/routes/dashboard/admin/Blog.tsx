@@ -23,12 +23,12 @@ function Blog({ placeholder }: Props) {
 
     if (name === "picture" && files) {
       const file = files[0]; // Get the selected file
-      console.log(file);
+      //console.log(file);
 
       // Upload the image to ImgBB
       const formData = new FormData();
       formData.append("image", file);
-      console.log(formData);
+      //console.log(formData);
       const response = await fetch(
         `https://api.imgbb.com/1/upload?expiration=300&key=${
           import.meta.env.VITE_IMGBB_API_KEY
@@ -45,7 +45,7 @@ function Blog({ placeholder }: Props) {
         const imageUrl = data.data.url;
 
         setFields((prev: any) => ({ ...prev, [name]: imageUrl }));
-        console.log(`Image URL: ${imageUrl}`);
+        //console.log(`Image URL: ${imageUrl}`);
       } else {
         console.error("Image upload failed:", data);
       }
@@ -60,7 +60,7 @@ function Blog({ placeholder }: Props) {
   };
   const handleEditorBlur = (newContent: string) => {
     const plainText = newContent.replace(/<[^>]*>/g, "");
-    console.log("Editor blur:", newContent);
+    //console.log("Editor blur:", newContent);
     setContent(newContent);
     setFields((prev) => ({
       ...prev,
@@ -71,7 +71,7 @@ function Blog({ placeholder }: Props) {
     e.preventDefault();
     const { title, picture, content } = fields;
     // console log the values
-    console.log(title, picture, content);
+    //console.log(title, picture, content);
 
     const postContent = {
       title,
@@ -89,7 +89,7 @@ function Blog({ placeholder }: Props) {
       });
 
       showSuccessAlert("Success", "Successfully signed up");
-      console.log("Successfully post created");
+      //console.log("Successfully post created");
     } catch (error) {
       console.error("Error creating post:", error);
       const { showErrorAlert } = await import("../../../utils/utilities");

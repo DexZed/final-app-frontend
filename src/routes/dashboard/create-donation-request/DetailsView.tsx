@@ -22,7 +22,7 @@ function DetailsView({}: Props) {
   });
   if (isPending) return <span>Loading...</span>;
   if (isError) return <span>Error: {error.message}</span>;
-  console.log("data", data);
+  //console.log("data", data);
   return (
     <>
       <h2 className="text-3xl font-bold flex justify-center m-5">Details</h2>

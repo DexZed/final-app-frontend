@@ -41,12 +41,12 @@ function Register({}: Props) {
 
     if (name === "picture" && files) {
       const file = files[0]; // Get the selected file
-      console.log(file);
+      //console.log(file);
 
       // Upload the image to ImgBB
       const formData = new FormData();
       formData.append("image", file);
-      console.log(formData);
+      //console.log(formData);
       const response = await fetch(
         `https://api.imgbb.com/1/upload?expiration=300&key=${
           import.meta.env.VITE_IMGBB_API_KEY
@@ -63,7 +63,7 @@ function Register({}: Props) {
         const imageUrl = data.data.url;
 
         setFields((prev: any) => ({ ...prev, [name]: imageUrl }));
-        console.log(`Image URL: ${imageUrl}`);
+        //console.log(`Image URL: ${imageUrl}`);
       } else {
         console.error("Image upload failed:", data);
       }
@@ -118,7 +118,7 @@ function Register({}: Props) {
       // Retry logic: keep checking until currentUser is available
       const retryDelay = 1000; // Delay in ms (1 second)
       while (!userReady() && retries < retryLimit) {
-        console.log("Waiting for currentUser...");
+        //console.log("Waiting for currentUser...");
         await new Promise((resolve) => setTimeout(resolve, retryDelay)); // Wait before retrying
         retries++;
       }
@@ -170,7 +170,7 @@ function Register({}: Props) {
   // Handle district change
   const handleDistrictChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const districtName = e.target.value;
-    console.log(districtName);
+    //console.log(districtName);
     setSelectedDistrict(districtName);
 
     // Filter upazilas based on the selected district
@@ -178,7 +178,7 @@ function Register({}: Props) {
       (upazila) =>
         upazila.district_id === dist.find((d) => d.name === districtName)?.id // Match district name to id
     );
-    console.log(filtered);
+    //console.log(filtered);
     setFilteredUpazilas(filtered);
     setSelectedUpazila(""); // Reset selected upazila when district changes
   };

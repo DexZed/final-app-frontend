@@ -23,7 +23,7 @@ function DonationsHome({}: Props) {
   });
   if (isPending) return <span>Loading...</span>;
   if (isError) return <span>Error: {error.message}</span>;
-  console.log(data);
+  //console.log(data);
   const recentDonations = data
     ?.donations?.sort(
       (a: any, b: any) =>
@@ -44,7 +44,7 @@ function DonationsHome({}: Props) {
         const response = await api.delete(`/api/deleteDonation/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response.data);
+        //console.log(response.data);
       }
     );
 
@@ -60,7 +60,7 @@ function DonationsHome({}: Props) {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(response);
+    //console.log(response);
     refetch();
   }
   async function handleCancel(id: string) {
@@ -73,7 +73,7 @@ function DonationsHome({}: Props) {
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    console.log(response);
+    //console.log(response);
     refetch();
   }
   return (

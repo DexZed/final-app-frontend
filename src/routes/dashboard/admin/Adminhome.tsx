@@ -17,7 +17,7 @@ function adminhome({}: Props) {
       return response.data;
     },
   });
-  console.log("length", data?.users?.length);
+  //console.log("length", data?.users?.length);
   const users = data?.users || [];
   // Add your admin home page logic here
   const dateRange = getDateRange(users);
@@ -42,7 +42,7 @@ function adminhome({}: Props) {
     },
   });
   const DonationsReq = Donations?.donations || [];
-  console.log("Donations", DonationsReq);
+  //console.log("Donations", DonationsReq);
   const donationsRange = getDateRange(DonationsReq);
   if (isLoading && pending) {
     return <span>Loading...</span>;

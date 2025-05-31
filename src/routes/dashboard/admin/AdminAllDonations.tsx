@@ -84,10 +84,10 @@ export default function AdminAllDonations() { // Added export default
       "I changed my mind",
       async () => {
         try {
-          const response = await api.delete(`/api/deleteDonation/${id}`, {
+           await api.delete(`/api/deleteDonation/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
-          console.log(response.data);
+          //console.log(response.data);
           // TODO: Invalidate queries to refetch data after deletion
           // queryClient.invalidateQueries({ queryKey: ['donations'] });
         } catch (err) {
@@ -102,14 +102,14 @@ export default function AdminAllDonations() { // Added export default
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      await api.patch(
         `/api/updateDonationRequest/${id}`,
         {
           donationStatus: newStatus,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log(response.data); // Use response.data for consistency
+      //console.log(response.data); // Use response.data for consistency
       // TODO: Invalidate queries to refetch data after update
       // queryClient.invalidateQueries({ queryKey: ['donations'] });
     } catch (err) {

@@ -28,7 +28,7 @@ export const useSecurityEnforcement = () => {
   effect(() => {
     const action = triggeredAction.value;
     if (action) {
-      console.log(`Triggered violation: ${action}`); // Optional debugging
+      //console.log(`Triggered violation: ${action}`); // Optional debugging
     }
   });
 

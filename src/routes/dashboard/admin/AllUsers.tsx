@@ -16,7 +16,7 @@ export default function AllUsers({}: Props) {
       return response.data;
     },
   });
-  console.log("data", data?.users);
+  //console.log("data", data?.users);
   const users = data?.users || [];
 
   const handleRemovePrivilege = async (id: string) => {
@@ -32,7 +32,7 @@ export default function AllUsers({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Privileges removed:", response.data);
+      //console.log("Privileges removed:", response.data);
       refetch();
       // Optionally invalidate cache or update local state here
     } catch (error) {
@@ -54,7 +54,7 @@ export default function AllUsers({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("User made admin:", response.data);
+      //console.log("User made admin:", response.data);
       refetch();
     } catch (error) {
       console.error("Error making admin:", error);
@@ -74,7 +74,7 @@ export default function AllUsers({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("User made volunteer:", response.data);
+      //console.log("User made volunteer:", response.data);
       refetch();
     } catch (error) {
       console.error("Error making volunteer:", error);
@@ -94,7 +94,7 @@ export default function AllUsers({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("User blocked:", response.data);
+      //console.log("User blocked:", response.data);
       refetch();
     } catch (error) {
       console.error("Error blocking user:", error);
@@ -113,7 +113,7 @@ export default function AllUsers({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("User unblocked:", response.data);
+      //console.log("User unblocked:", response.data);
       refetch();
     } catch (error) {
       console.error("Error unblocking user:", error);

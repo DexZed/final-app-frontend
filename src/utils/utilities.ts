@@ -2,21 +2,21 @@ import Swal from "sweetalert2";
 import { parseISO, format } from "date-fns";
 
 export function validatePass(password: string): string | null {
-  console.log(`Validating password: ${password}`);
+  //console.log(`Validating password: ${password}`);
   if (password.length < 6) {
-    console.log("Password length check failed");
+    //console.log("Password length check failed");
     return "Password must be at least 6 characters long.";
   }
   if (!/[A-Z]/.test(password)) {
-    console.log("Uppercase letter check failed");
+    //console.log("Uppercase letter check failed");
     return "Password must include at least one uppercase letter.";
   }
   if (!/[a-z]/.test(password)) {
-    console.log("Lowercase letter check failed");
+    //console.log("Lowercase letter check failed");
     return "Password must include at least one lowercase letter.";
   }
 
-  console.log("Password is valid");
+  //console.log("Password is valid");
   return null;
 }
 export function errMsg(err: unknown): err is { message: string } {

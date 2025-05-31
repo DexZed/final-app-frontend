@@ -49,7 +49,7 @@ function SignUp({}: Props) {
     const error = validatePass(password);
     if (error) {
       setPasswordError(error);
-      console.log("Password validation failed: ", error);
+      //console.log("Password validation failed: ", error);
       return;
     }
 

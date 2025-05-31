@@ -73,10 +73,10 @@ function Profile({}: Props) {
     }
   }, [data]); // Depend on 'data' object
 
-  console.log("Fields state:", fields);
-   console.log("Selected District:", selectedDistrict);
-   console.log("Selected Upazila:", selectedUpazila);
-  console.log("Filtered Upazilas:", filteredUpazilas);
+  //console.log("Fields state:", fields);
+   //console.log("Selected District:", selectedDistrict);
+   //console.log("Selected Upazila:", selectedUpazila);
+  //console.log("Filtered Upazilas:", filteredUpazilas);
 
   const handleChange = async (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -97,9 +97,9 @@ function Profile({}: Props) {
         const imgbbData = await response.json();
         if (imgbbData.success) {
           setFields((prev) => ({ ...prev, [name]: imgbbData.data.url }));
-          console.log("Image uploaded successfully", imgbbData.data.url);
+          //console.log("Image uploaded successfully", imgbbData.data.url);
         } else {
-          console.log("Image upload failed", imgbbData.error || "Unknown error");
+          //console.log("Image upload failed", imgbbData.error || "Unknown error");
           // Optionally, show an error to the user here
           const { showErrorAlert } = await import("../../utils/utilities");
           showErrorAlert("Image Upload Failed", imgbbData.error?.message || "Could not upload image.");

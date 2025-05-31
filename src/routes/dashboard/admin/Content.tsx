@@ -21,10 +21,10 @@ function Content({}: Props) {
       return response.data;
     },
   });
-  console.log("data", data);
+  //console.log("data", data);
   const posts = data || [];
   const handlePublish = async (postId: string) => {
-    console.log(`Publishing post: ${postId}`);
+    //console.log(`Publishing post: ${postId}`);
     try {
       const { api } = await import("../../../services/api");
       const token = await getAuthToken();
@@ -35,7 +35,7 @@ function Content({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Post published successfully:", response.data);
+      //console.log("Post published successfully:", response.data);
       const { showSuccessAlert } = await import("../../../utils/utilities");
       showSuccessAlert("Success", "Post published successfully");
       refetch();
@@ -47,7 +47,7 @@ function Content({}: Props) {
   };
 
   const handleUnpublish = async (postId: string) => {
-    console.log(`Unpublishing post: ${postId}`);
+    //console.log(`Unpublishing post: ${postId}`);
     try {
       const token = await getAuthToken();
       const { api } = await import("../../../services/api");
@@ -58,7 +58,7 @@ function Content({}: Props) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Post unpublished successfully:", response.data);
+      //console.log("Post unpublished successfully:", response.data);
       const { showSuccessAlert } = await import("../../../utils/utilities");
       showSuccessAlert("Success!", "Post unpublished successfully.");
       refetch();
@@ -70,7 +70,7 @@ function Content({}: Props) {
   };
 
   const handleDelete = async (postId: string) => {
-    console.log(`Deleting post: ${postId}`);
+    //console.log(`Deleting post: ${postId}`);
     try {
       const { api } = await import("../../../services/api");
       const token = await getAuthToken();
@@ -86,7 +86,7 @@ function Content({}: Props) {
           const response = await api.delete(`/api/deletePost/${postId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
-          console.log("Post deleted successfully:", response.data);
+          //console.log("Post deleted successfully:", response.data);
         }
       );
 

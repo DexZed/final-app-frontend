@@ -23,9 +23,9 @@ export const AdminRoute: React.FC<AdminRouteProps> = ({ children }) => {
     },
   });
  
- console.log("data",data)
+ //console.log("data",data)
   const status = data?.user?.role;
-  console.log("status",status)
+  //console.log("status",status)
  
   if (isPending) return <span>Loading...</span>;
   if (isError) return <span>Error: {error.message}</span>;
