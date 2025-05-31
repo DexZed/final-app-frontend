@@ -18,6 +18,10 @@ interface DonationItem { // Define a type for your donation items for better typ
   requesterEmail?: string;
   // Add any other properties your item has
 }
+interface ApiPage { // Define the structure returned by your API and queryFn
+  donations: DonationItem[];
+  nextCursor: number | null;
+}
 function AdminAllDonations() {
     const { getAuthToken, currentUser } = useAuthContext();
     const [selectedStatus, setSelectedStatus] = useState("");
