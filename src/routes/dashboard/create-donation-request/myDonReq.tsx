@@ -76,7 +76,8 @@ function MyDonReq({}: Props) {
       "Affirmative",
       "I changed my mind",
       async () => {
-        const response = await api.delete(`/api/deleteDonation/${id}`, {
+        //const response = 
+        await api.delete(`/api/deleteDonation/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         //console.log(response.data);
@@ -86,7 +87,8 @@ function MyDonReq({}: Props) {
   async function handleDone(id: string) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
-    const response = await api.patch(
+    //const response =
+     await api.patch(
       `/api/updateDonationRequest/${id}`,
       {
         donationStatus: "done",
@@ -98,7 +100,7 @@ function MyDonReq({}: Props) {
   async function handleCancel(id: string) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
-    const response = await api.patch(
+     await api.patch(
       `/api/updateDonationRequest/${id}`,
       {
         donationStatus: "cancelled",
