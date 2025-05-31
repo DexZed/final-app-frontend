@@ -36,7 +36,7 @@ function MyDonReq({}: Props) {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["donations"],
+    queryKey: ["myDonationRequests", currentUser?.email, selectedStatus],
     queryFn: async ({ pageParam }) => {
       const { api } = await import("../../../services/api");
       const token = await getAuthToken();
