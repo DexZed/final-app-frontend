@@ -28,7 +28,8 @@ function Content({}: Props) {
     try {
       const { api } = await import("../../../services/api");
       const token = await getAuthToken();
-      const response = await api.patch(
+      //const response = 
+      await api.patch(
         `/api/updatePost/${postId}`,
         { status: "published" },
         {
@@ -51,7 +52,8 @@ function Content({}: Props) {
     try {
       const token = await getAuthToken();
       const { api } = await import("../../../services/api");
-      const response = await api.patch(
+      //const response = 
+      await api.patch(
         `/api/updatePost/${postId}`,
         { status: "draft" },
         {
@@ -83,7 +85,8 @@ function Content({}: Props) {
         "Delete",
         "Cancel",
         async () => {
-          const response = await api.delete(`/api/deletePost/${postId}`, {
+          //const response = 
+          await api.delete(`/api/deletePost/${postId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           //console.log("Post deleted successfully:", response.data);

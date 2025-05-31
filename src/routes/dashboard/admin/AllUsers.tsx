@@ -23,7 +23,8 @@ export default function AllUsers({}: Props) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      //const response =
+       await api.patch(
         `/api/updateUser/${id}`,
         {
           role: "donor", // Assuming "user" role is the default for non-admin
@@ -45,7 +46,8 @@ export default function AllUsers({}: Props) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      //const response =
+       await api.patch(
         `/api/updateUser/${id}`,
         {
           role: "admin",
@@ -65,7 +67,8 @@ export default function AllUsers({}: Props) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      //const response = 
+      await api.patch(
         `/api/updateUser/${id}`,
         {
           role: "volunteer",
@@ -85,7 +88,8 @@ export default function AllUsers({}: Props) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      //const response =
+       await api.patch(
         `/api/updateUser/${id}`,
         {
           status: "blocked",
@@ -104,7 +108,8 @@ export default function AllUsers({}: Props) {
     const { api } = await import("../../../services/api");
     const token = await getAuthToken();
     try {
-      const response = await api.patch(
+      //const response = 
+      await api.patch(
         `/api/updateUser/${id}`,
         {
           status: "active",
