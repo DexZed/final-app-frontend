@@ -102,8 +102,8 @@ function Nav({}: Props) {
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">
-            <img src={"https://th.bing.com/th/id/R.5eb1959636a370b661bc91940fe49cee?rik=DiotHJlkKQR6dg&riu=http%3a%2f%2fwww.datwebdigital.com%2fDWD%2fwp-content%2fuploads%2f2012%2f06%2flogo-design.jpg&ehk=fa8lsC0cm1nXH1dOqP%2f9dC1ohF3%2bcobEoqkMOaxrV2I%3d&risl=&pid=ImgRaw&r=0"} alt="logo"  className="rounded-full w-20 opacity-50"/>
-            Bloood Donation</a>
+            <img src={"https://images-platform.99static.com//bUCBl5JthmEXBi2ZlOaZOLTdyt4=/0x0:2000x2000/fit-in/500x500/projects-files/123/12328/1232827/e66156b3-f5da-4ffe-bf57-bd8ac3711e80.jpg"} alt="logo"  className="rounded-full w-10 "/>
+            Blood Connect</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
